@@ -55,7 +55,9 @@ class params(Structure):
 
 #main start
 
-filedirectory = "C:/Users/leblang/Dropbox/Younsik/data/2007FeTe_sys3/200708FeTe/2020.07.08.17.38.32/"
+filedirectory = "C:/Users/leblang/Dropbox/Younsik/data/2007FeTe_sys3/200708FeTe/2020.07.08.17.38.32/" # set the directory of the data file
+binsize = np.array([100, 150, 150]) # set binning size
+
 
 with open(filedirectory + "acquisition.cfg","r") as cfg:
 
@@ -91,9 +93,9 @@ with open(filedirectory + "acquisition.cfg","r") as cfg:
 
     energymatrix *= centerenergy/10
 
-binsize = np.array([100, 150, 150])
 
-mydll = WinDLL('C:/core.dll')
+
+mydll = WinDLL('C:/core.dll') # for windows
 
 corefunc = mydll['cal']
 corefunc.argtypes = [np.ctypeslib.ndpointer(dtype=np.float64, ndim=3, flags="C_CONTIGUOUS"), POINTER(params)]
@@ -131,7 +133,7 @@ else:
     print("read error")
 
 
-npytoitx_tof.npytoitx(a, binsize, [beginenergy, endenergy])
+npytoitx_tof.npytoitx(a, binsize, [beginenergy, endenergy]) # write streamed data file into itx file
 
 print("successfully loaded data")
 
