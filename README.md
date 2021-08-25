@@ -3,5 +3,7 @@
  
 In addition, mesh pattern as well as MCP inhomogenity can be compensated by normalizing the raw data (in (x, y, t) space) before converting to (θx, θy, E) space by using a poly Au data.
 
+The core.dll file for Windows 64-bit environment.
+
 
 <p align="center"><img src="result.png"></p>
